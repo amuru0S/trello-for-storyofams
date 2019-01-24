@@ -20,17 +20,36 @@ html, body {
     flex-flow: column;
     flex-grow: 1;
     align-items: stretch;
-  
-    background-color: #026aa7;
+    background-color: #f2f2f2;
     color: white;
   }
   
   .header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 7px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
+  .header-categories {
+      margin-left: 150px;
+      padding-left: 70px;
+    
+  }
+
+  .category {
+    flex: 1;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    font-weight: 200;
+    text-decoration: none;
+    padding-right: 30px;
+    padding-left: 30px;
+    word-spacing: 0.5px;
+    margin-left: 40px;
+  }
+
   
   .App {
     display: flex;
@@ -38,9 +57,7 @@ html, body {
     flex-flow: column;
     flex-grow: 1;
     align-items: stretch;
-  
     padding: 7px;
-  
     overflow: auto;
   }
   
@@ -55,12 +72,8 @@ html, body {
     flex: 1;
     flex-grow: 1;
     align-self: stretch;
-  
-    background-color: steelblue;
-    color: white;
-  
+    background-color: #f2f2f2;
     padding: 7px;
-  
     overflow: auto;
   }
   
@@ -68,47 +81,39 @@ html, body {
     flex: none;
     width: 270px;
     height: 100%;
-  
     padding: 0;
     margin: 7px;
     border-radius: 3px;
-  
     background-color: white;
     color: #333;
-  
     border: thin solid #DEDEDE;
-  
     box-sizing: border-box;
   }
   
   .list-header {
     height: 50px;
     font-weight: bold;
-    padding: 7px 11px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 7px 7px;
+    background-color: #339933;
     border-bottom: thin solid #DEDEDE;
   }
   
   .list-title {
     cursor: pointer;
-  
-    white-space: nowrap;      /*keep text on one line */
-    overflow: hidden;         /*prevent text from being shown outside the border */
+    text-align: center;
+    color: white;
+    white-space: nowrap;     
+    overflow: hidden;         
     text-overflow: ellipsis;
   }
   
   .list-body {
     max-height: 444px;
     overflow-y: auto !important;
-  
     padding: 7px 11px;
-    background-color: #DEDEDE;
-  
     overflow-y: auto;
   }
-  
-  /* .list-footer {
-  
-  } */
   
   .footer {
     padding: 11px;
@@ -121,12 +126,13 @@ html, body {
   .task {
     background-color: white;
     color: #333;
-  
+    font-family: 'Courier New', Courier, monospace;
     border: thin solid #DEDEDE;
     border-radius: 3px;
-  
     padding: 7px 11px;
     margin: 11px 0;
   
     cursor: pointer;  
   }
+
+

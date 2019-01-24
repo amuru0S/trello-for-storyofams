@@ -1,22 +1,9 @@
-// home component that handles all the boards
-// redux related
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { addBoard, updateBoard, deleteBoard } from '../../actions/';
+import { alert } from '../../utils/';
+import HomeView from '../presentation/HomeView';
 
-import {
-  addBoard,
-  updateBoard,
-  deleteBoard,
-} from '../../actions/'
 
-// import utils
-import {
-  alert
-} from '../../utils/'
-
-// import our presentation component to connect 
-import HomeView from '../presentation/HomeView'
-
-// define our mapStateToProps, mapDispatchToProps
 const mapStateToProps = (state) => {
   return {
     boards: state.boards
@@ -30,21 +17,18 @@ const mapDispatchToProps = (dispatch) => {
         title
       }
       dispatch( addBoard(board) )
-      // show alert
       alert({
         text: title + ' added ...'
       })
     },
     updateBoardHandler: (board) => {
       dispatch( updateBoard(board) )
-      // show alert
       alert({
         text: board.title + ' updated ...'
       })
     },
     deleteBoardHandler: (id) => {
       dispatch( deleteBoard(id) )
-      // show alert
       alert({
         text: 'Board deleted ...'
       })
@@ -52,7 +36,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(HomeView)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

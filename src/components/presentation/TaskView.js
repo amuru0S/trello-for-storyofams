@@ -1,5 +1,4 @@
-// component to show single task
-import React from 'react'
+import React from 'react';
 
 const TaskView = (props) => (
   <div className="task"
@@ -9,4 +8,4 @@ const TaskView = (props) => (
   </div>
 )
 
-export default TaskView
+export default TaskView;

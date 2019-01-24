@@ -1,16 +1,9 @@
-// simple modal to show the task
-import React from 'react'
-
-import {
-  Button,
-  Form, FormGroup, Input, Label,
-  Modal, ModalHeader, ModalBody, ModalFooter
-} from 'reactstrap'
+import React from 'react';
+import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class EditTaskModal extends React.Component {
   constructor(props) {
     super(props)
-    // setting the state
     this.state = {
       id: props.id,
       title: props.title,
@@ -25,7 +18,6 @@ class EditTaskModal extends React.Component {
         <ModalHeader toggle={this.props.toggleHandler}>{this.props.title}</ModalHeader>
         <ModalBody>
           <Form>
-            {/* title */}
             <FormGroup>
               <Label for="taskTitle">Title:</Label>
               <Input type="text" name="title" id="taskTitle" value={this.state.title} 
@@ -34,7 +26,6 @@ class EditTaskModal extends React.Component {
                 })}
               />
             </FormGroup>
-            {/* description */}
             <FormGroup>
               <Label for="taskDescription">Description</Label>
               <Input type="textarea" name="taskDescription" id="taskDescription" value={this.state.description} 
@@ -43,7 +34,6 @@ class EditTaskModal extends React.Component {
                 })}
               />
             </FormGroup>
-            {/* List */}
             <FormGroup>
               <Label for="taskList">Change List</Label>
               <Input type="select" name="taskList" id="taskList" value={this.state.list_id}
@@ -70,4 +60,4 @@ class EditTaskModal extends React.Component {
   }
 }
 
-export default EditTaskModal
+export default EditTaskModal;

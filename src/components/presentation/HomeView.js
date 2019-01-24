@@ -1,48 +1,29 @@
-// main home view
-import React from 'react'
-
-import _ from 'lodash'
-
-import {
-  Alert,
-  Input, Button,
-  Container, Row, Col,
-  Form, FormGroup,
-  Modal, ModalHeader, ModalBody, ModalFooter,
-} from 'reactstrap'
-
-// import utils
-import {
-  alert,
-  boardTitleValidator
-} from '../../utils/'
-
-// import Board
-import Board from '../container/Board'
+import React from 'react';
+import _ from 'lodash';
+import { Alert, Input, Button, Container, Row, Col, Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { alert, boardTitleValidator } from '../../utils/';
+import Board from '../container/Board';
 
 class HomeView extends React.Component {
   constructor(props) {
-    super(props)
-    // set the state
+    super(props);
     this.state = {
       modal: false,
       current_board: 1
     }
-    // proxy toggle to toggle modal
+
     this.toggle = this._toggleModal.bind(this)
   }
 
-  // helper to get the current selected board info
+ 
   _getCurrentBoard() {
     return _.find(this.props.boards, (b) => b.id === this.state.current_board)
   }
 
-  // helper function to find out if current board default
   _isDefaultBoard() {
     return this._getCurrentBoard() && this._getCurrentBoard().default
   }
 
-  // helper function to toggle modal
   _toggleModal() {
     this.setState({
       modal: !this.state.modal
@@ -57,17 +38,15 @@ class HomeView extends React.Component {
         text: message,
         type: 'error'
       })
-      // do not proceed
       return
     }
     this.props.addBoardHandler(title)
-    // close the modal
     this.setState({
       modal: false
     })
   }
 
-  // helper function to update board title
+
   _updateBoardTitle = () => {
     let title = this.currentBoardTitleDOM.value.trim()
     let { success, message } = boardTitleValidator(title)
@@ -76,7 +55,6 @@ class HomeView extends React.Component {
         text: message,
         type: 'error'
       })
-      // do not proceed
       return
     }
     let current_board = this._getCurrentBoard()
@@ -87,18 +65,14 @@ class HomeView extends React.Component {
       title
     })
     this.props.updateBoardHandler(board)
-    // close the modal
     this.setState({
       modal: false
     })
   }
 
-  // helper function to delete board
   _deleteBoard = () => {
     this.props.deleteBoardHandler(this.state.current_board)
-    // we need to switch to the default board
     let default_board = _.find(this.props.boards, (b) => b.default)
-    // close the modal
     this.setState({
       current_board: default_board.id,
       modal: false
@@ -140,9 +114,7 @@ class HomeView extends React.Component {
             </Col>
           </Row>
         </Container>
-        {/* CURRENT BOARD */}
         <Board id={this.state.current_board} />
-        {/* Modal to edit Board properties */}
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Manage Board</ModalHeader>
           <ModalBody>
@@ -183,7 +155,6 @@ class HomeView extends React.Component {
             <div>
               <Form>
                 <FormGroup row>
-                  {/*<Label for="newBoardTitle" className="mr-sm-2">Add New Board:</Label>*/}
                   <Col sm={8}>
                     <Input type="text" name="newBoardTitle" id="newBoardTitle" placeholder="Enter new board name ..." 
                       innerRef={(ref) => this.newBoardTitleDOM = ref} 

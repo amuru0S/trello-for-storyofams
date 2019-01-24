@@ -5,8 +5,6 @@ import './App.css'
 import { 
   BrowserRouter as Router, 
   Route, 
-  // Link,
-  // withRouter, 
 } from "react-router-dom"
 
 import {
@@ -14,19 +12,17 @@ import {
 } from 'reactstrap'
 
 import Home from './components/container/Home'
+import Header from './components/presentation/Header';
 
 const App = () => (
   <Router>
     <Container fluid className="App-Container">
       <Row className="header">
-        <Col s="8">
-          <h5>Simple React Trello</h5>
-        </Col>
+          <Header />
         <Col s="4">{' '}</Col>
       </Row>
 
       <Row className="App">
-        {/*<Route exact path="/" component={withRouter(Board)}/>*/}
         <Route exact path="/" component={Home}/>
       </Row>
 

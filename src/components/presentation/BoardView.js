@@ -1,31 +1,19 @@
-import React from 'react'
+import React from 'react';
+import _ from 'lodash';
+import { Container, Input, Button } from 'reactstrap';
+import List from '../container/List';
 
-import _ from 'lodash'
 
-import {
-  Container,
-  Input, Button,
-} from 'reactstrap'
-
-// import Lists to connect
-import List from '../container/List'
-
-// functional componet that has ref (not exactly stateless but not stateful either?)
 function BoardView(props) {
-  // textInput must be declared here so the ref can refer to it
   let textInput = false
 
   function handleAddList() {
-    // let title = this.newListTitle.value.trim()
     let input = textInput
     let title = input.value
-    // do not proceed if title is empty
     if (_.isEmpty(title)) {
       return
     }
     props.addListHandler(title)
-    // clear the input
-    // this.newListTitle.value = ''
     input.value = ''
   }
 
@@ -60,8 +48,4 @@ function BoardView(props) {
   )
 }
 
-/*const BoardView = (props) => (
-  
-)*/
-
-export default BoardView
+export default BoardView;

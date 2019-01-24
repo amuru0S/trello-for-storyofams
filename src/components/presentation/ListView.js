@@ -1,37 +1,20 @@
-// shows individual list
-import React from 'react'
-
-import _ from 'lodash'
-
-import {
-  Input, Button
-} from 'reactstrap'
-
-import {
-  alert,
-  taskTitleValidator,
-} from '../../utils/'
-
-// import components
+import React from 'react';
+import _ from 'lodash';
+import { Input, Button } from 'reactstrap';
+import { alert, taskTitleValidator } from '../../utils/';
 import TaskView from './TaskView'
 import EditTaskModal from './EditTaskModal'
 
 
-// make it as stateful class for toggling edit mode
 class ListView extends React.Component {
-
-  // START: Lifecycle handlers
   constructor(props) {
     super(props)
-    // set the state
     this.state = {
       title_edited: false,
       edit_modal_shown: false,
-      // details of current task to be edited
       current_task: {}
     }
 
-    // toggle edit modal
     this.toggle_edit_modal = this._toggleEditModal.bind(this);
   }
 
@@ -43,27 +26,22 @@ class ListView extends React.Component {
     document.removeEventListener("click", this._handleClick)
   }
 
-  // helper function to handle click event to escape from edit mode
   _handleClick = (e) => {
     this.setState({
       title_edited: false
     })
   }
-  // END: Lifecycle handlers
 
-  // helper function to toggle edit modal
   _toggleEditModal() {
     this.setState({
       edit_modal_shown: !this.state.edit_modal_shown
     })
   }
 
-  // helper function to delete list
   _deleteList = () => {
     this.props.deleteListHandler(this.props.id)
   }
 
-  // helper function to add task
   _addTask = () => {
     let title = this.newTaskTitle.value.trim()
 
@@ -73,7 +51,6 @@ class ListView extends React.Component {
         text: message,
         type: 'error'
       })
-      // do not proceed
       return
     }
 
@@ -82,13 +59,10 @@ class ListView extends React.Component {
       list_id: this.props.id
     })
 
-    // clear the input
     this.newTaskTitle.value = ""
   }
 
-  // helper function to edit task
   _showEditTaskModal = (details) => {
-    // we have to pick specific stuffs from the details since all props are passed
     let task = _.pick(details, ["id", "title", "description", "list_id"])
     this.setState({
       edit_modal_shown: true,
@@ -97,19 +71,16 @@ class ListView extends React.Component {
   }
 
   _updateTask = (task) => {
-    // before updating validate for title
     let { success, message } = taskTitleValidator(task.title)
     if (!success) {
       alert({
         text: message,
         type: 'error'
       })
-      // do not proceed
       return
     }
 
     this.props.updateTaskHandler(task)
-    // close the modal
     this.setState({
       edit_modal_shown: false,
       current_task: {}
@@ -118,14 +89,12 @@ class ListView extends React.Component {
 
   _deleteTask = (task_id) => {
     this.props.deleteTaskHandler(task_id)
-    // close the modal
     this.setState({
       edit_modal_shown: false,
       current_task: {}
     })
   }
 
-  // throttled list title update
   _throttledTitleUpdate = _.throttle((e) => {
 
     if (!this.listTitleInput) {
@@ -156,24 +125,20 @@ class ListView extends React.Component {
                   innerRef={(ref) => {
                     this.listTitleInput = ref
                   }}
-                  // on change throttle and update the title
                   onChange={this._throttledTitleUpdate}
                   onKeyPress={(e) => {
                     if (e.key === 'Enter') {
-                      // save the value
                       this.props.updateListHandler({
                         id: this.props.id,
                         title: this.listTitleInput.value.trim(),
                         board_id: this.props.board_id
                       })
-                      // toggle the edit mode
                       this.setState({
                         title_edited: false
                       })
                     }
                   }}
                   onClick={(e) => {
-                    // stop click event from propagating
                     e.stopPropagation()
                     e.nativeEvent.stopImmediatePropagation()
                     return false
@@ -184,10 +149,8 @@ class ListView extends React.Component {
                 <div
                   className="list-title"
                   onClick={(e) => {
-                    // stop click event from propagating
                     e.stopPropagation()
                     e.nativeEvent.stopImmediatePropagation()
-                    // set our new state
                     this.setState({
                       title_edited: true
                     })
@@ -230,8 +193,6 @@ class ListView extends React.Component {
             {' '} Delete List
           </Button>{' '}
         </div>
-
-        {/* START: edit task modal */}
         {
           this.state.edit_modal_shown
           ? (
@@ -246,8 +207,6 @@ class ListView extends React.Component {
           )
           : null
         }
-        
-        {/* END: edit task modal */}
       </div>
     )
   }

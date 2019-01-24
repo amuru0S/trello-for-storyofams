@@ -1,7 +1,5 @@
-// utility functions like validators, alert etc
-import Noty from 'noty'
-
-import _ from 'lodash'
+import Noty from 'noty';
+import _ from 'lodash';
 
 export const alert = (options) => {
   const default_options = {
@@ -15,9 +13,8 @@ export const alert = (options) => {
   new Noty(opts).show()
 }
 
-// task title validator
+
 export const taskTitleValidator = (title) => {
-  // title should not be empty
   if (_.isEmpty(title)) {
     return {
       success: false,
@@ -25,7 +22,6 @@ export const taskTitleValidator = (title) => {
     }
   }
 
-  // title should not be more than 80 characters
   if (_.size(title) > 80) {
     return {
       success: false,
@@ -33,16 +29,13 @@ export const taskTitleValidator = (title) => {
     } 
   }
 
-  // all fine
   return {
     success: true
   }
 
 }
 
-// board title validator
 export const boardTitleValidator = (title) => {
-  // title should not be empty
   if (_.isEmpty(title)) {
     return {
       success: false,
@@ -50,7 +43,6 @@ export const boardTitleValidator = (title) => {
     }
   }
 
-  // title should not be more than 80 characters
   if (_.size(title) > 30) {
     return {
       success: false,
@@ -58,7 +50,6 @@ export const boardTitleValidator = (title) => {
     } 
   }
 
-  // all fine
   return {
     success: true
   }  

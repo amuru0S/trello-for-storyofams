@@ -1,13 +1,13 @@
 import React from 'react';
 import _ from 'lodash';
-import { Container, Input, Button } from 'reactstrap';
+import { Input, Button } from 'reactstrap';
 import List from '../container/List';
 
 
-function BoardView(props) {
+const BoardView = (props) => {
   let textInput = false
 
-  function handleAddList() {
+  const handleAddList = () => {
     let input = textInput
     let title = input.value
     if (_.isEmpty(title)) {
@@ -18,7 +18,7 @@ function BoardView(props) {
   }
 
   return (
-    <Container fluid className="board">
+    <div className="board">
       {
         props.lists.map((l) => (
           <List
@@ -36,15 +36,14 @@ function BoardView(props) {
             placeholder="Enter List Title ..."
             innerRef={(ref) => textInput = ref}
           />
-          <Button outline block color="primary"
+          <Button className="add-list"
             onClick={handleAddList}
           >
-            <span className="oi" data-glyph="plus" title="add task" aria-hidden="true"></span>{' '}
-            {' '} Add List
-          </Button>{' '}
+            Add List
+          </Button>
         </div>
       </div>
-    </Container>
+    </div>
   )
 }
 

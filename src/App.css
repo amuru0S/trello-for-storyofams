@@ -21,7 +21,6 @@ html, body {
     flex-grow: 1;
     align-items: stretch;
     background-color: #f2f2f2;
-    color: white;
   }
   
   .header {
@@ -75,6 +74,37 @@ html, body {
     background-color: #f2f2f2;
     padding: 7px;
     overflow: auto;
+  }
+
+  .default-board {
+      float: right;
+      width: 30%;
+  }
+  
+  .settings {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background-image: url(Images/settings.png);
+      background-repeat: no-repeat;
+      background-color: burlywood;
+  }
+
+  .create-board {
+    width: 30%;
+    background-color: lightblue;
+    color: black;
+  }
+
+  .update-title, .del-board {
+    width: 30%;
+    background-color: grey;
+    color: white;
+    margin-right: 20px;
+  }
+
+  .update-title:hover{
+      background-color: lightgrey;
   }
   
   .list {
@@ -131,8 +161,31 @@ html, body {
     border-radius: 3px;
     padding: 7px 11px;
     margin: 11px 0;
-  
     cursor: pointer;  
+  }
+
+  .add-task {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0.5px gray;
+    background-color: lightgreen;
+    color: green;
+  }
+
+  .del-list {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0.5px gray;
+    background-color: lightcoral;
+    color: crimson;
+  }
+
+  .add-list {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0.5px gray;
+      background-color: lightseagreen;
+      color: white;
   }
 
 

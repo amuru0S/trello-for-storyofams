@@ -1,6 +1,3 @@
-// define our actions
-
-// board related actions
 export const addBoard = (board) => {
     return {
       type: 'ADD_BOARD',
@@ -8,7 +5,6 @@ export const addBoard = (board) => {
     }
   }
   
-  // update board
   export const updateBoard = (board) => {
     return {
       type: 'UPDATE_BOARD',
@@ -16,7 +12,6 @@ export const addBoard = (board) => {
     }
   }
   
-  // delete board
   export const deleteBoard = (id) => {
     return {
       type: 'DELETE_BOARD',
@@ -24,7 +19,6 @@ export const addBoard = (board) => {
     }
   }
   
-  // list related actions
   export const addList = (list) => {
     return {
       type: 'ADD_LIST',
@@ -32,7 +26,6 @@ export const addBoard = (board) => {
     }
   }
   
-  // update list with new title
   export const updateList = (list) => {
     return {
       type: 'UPDATE_LIST',
@@ -47,8 +40,6 @@ export const addBoard = (board) => {
     }
   }
   
-  // task related actions
-  
   export const addTask = (task) => {
       return {
       type: 'ADD_TASK',
@@ -56,7 +47,6 @@ export const addBoard = (board) => {
     }
   }
   
-  // update task (details will be the whole task with id)
   export const updateTask = (task) => {
     return {
       type: 'UPDATE_TASK',

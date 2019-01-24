@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
-import { Alert, Input, Button, Container, Row, Col, Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+// import { Alert, Input, Button, Container, Row, Col, Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Alert, Input, Button, Form, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { alert, boardTitleValidator } from '../../utils/';
 import Board from '../container/Board';
 
@@ -81,15 +82,11 @@ class HomeView extends React.Component {
     return false 
   }
 
-  render() {
+render() {
     return (
       <div className="App-Container">
-        <Container fluid>
-          <Row>
-            <Col sm="6">
-              <Form>
-                <FormGroup row>
-                  <Col sm="8">
+        <div>
+              <Form className="default-board">
                     <Input type="select" name="boardList" id="boardList" value={this.state.current_board}
                       onChange={(e) => this.setState({
                         current_board: parseInt(e.target.value, 10)
@@ -101,41 +98,27 @@ class HomeView extends React.Component {
                         ))
                       }
                     </Input>
-                  </Col>
-                  <Col sm="4">
-                    <Button color="" style={{}}
+                    <Button className="settings"
                       onClick={this.toggle}
                     >
-                      <span className="oi" data-glyph="cog" title="delete List" aria-hidden="true"></span>{' '}
-                    </Button>{' '}
-                  </Col>
-                </FormGroup>
+                    </Button>
               </Form>
-            </Col>
-          </Row>
-        </Container>
+        </div>
         <Board id={this.state.current_board} />
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Manage Board</ModalHeader>
           <ModalBody>
             <div className="label-title">Manage Current Board</div>
             <Form>
-              <FormGroup row>
-                <Col sm={8}>
                   <Input type="text" name="currentBoardTitle" id="currentBoardTitle" 
                     defaultValue={this._getCurrentBoard().title} 
                     placeholder="Update current board ..."
                     innerRef={(ref) => this.currentBoardTitleDOM = ref} 
                   />
-                </Col>
-                <Col sm={4}>
-                  <Button color="primary"
+                  <Button className="update-title"
                     onClick={this._updateBoardTitle}
-                  >Update Title</Button>
-                </Col>
-              </FormGroup>
-              <FormGroup style={{justifyContent: 'center', textAlign: 'center'}}>
-                <Button color="danger" disabled={this._isDefaultBoard()}
+                  > Update Title </Button>
+                <Button className="del-board" disabled={this._isDefaultBoard()}
                   onClick={this._deleteBoard}
                 >Delete Board</Button>
                 {
@@ -147,28 +130,21 @@ class HomeView extends React.Component {
                   )
                   : null
                 }  
-              </FormGroup>
             </Form>
           </ModalBody>
           <ModalFooter style={{display: 'block', justifyContent: 'center'}}>
             <div className="label-title">Create New Board</div>
             <div>
               <Form>
-                <FormGroup row>
-                  <Col sm={8}>
                     <Input type="text" name="newBoardTitle" id="newBoardTitle" placeholder="Enter new board name ..." 
                       innerRef={(ref) => this.newBoardTitleDOM = ref} 
                     />
-                  </Col>
-                  <Col sm={4}>
-                    <Button color="success" onClick={this._addBoard}>Create Board</Button>
-                  </Col>
-                </FormGroup>
+                    <Button className="create-board" color="success" onClick={this._addBoard}>Create Board</Button>
               </Form>
             </div>
           </ModalFooter>
           <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button className="cancel" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>

@@ -51,8 +51,8 @@ class EditTaskModal extends React.Component {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="danger" onClick={() => this.props.deleteHandler(this.state.id)}>Delete Task</Button>{' '}
-          <Button color="success" onClick={() => this.props.updateHandler(this.state)}>Update Task</Button>{' '}
+          <Button color="danger" onClick={() => this.props.deleteHandler(this.state.id)}>Delete Task</Button>
+          <Button color="success" onClick={() => this.props.updateHandler(this.state)}>Update Task</Button>
           <Button color="secondary" onClick={this.props.toggleHandler}>Cancel</Button>
         </ModalFooter>
       </Modal>

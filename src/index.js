@@ -1,12 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// include bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// special helper to pass the store as prop to all the components
+import { Provider } from 'react-redux'
+
+// redux persist stuffs
+import { persistStore, persistReducer } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
+import storage from 'redux-persist/lib/storage'
+
+
+// create a redux store
+import { createStore } from 'redux'
+import appReducer from './reducers'
+
+import App from './App'
+
+import registerServiceWorker from './registerServiceWorker';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, appReducer)
+
+// create store
+// let store = createStore(appReducer)
+let store = createStore(persistedReducer)
+// persistor for redux-persist
+let persistor = persistStore(store)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>, 
+  document.getElementById('root')
+)
+
+
+registerServiceWorker();

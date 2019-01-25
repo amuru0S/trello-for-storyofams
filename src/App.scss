@@ -1,6 +1,8 @@
+@import './variables.scss';
+
 html, body {
     position: relative;
-    height: 100%;
+    height: $height;
   }
   
   #root {
@@ -12,7 +14,7 @@ html, body {
   
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: $height;
   }
   
   .App-Container {
@@ -25,7 +27,7 @@ html, body {
   
   .header {
     display: flex;
-    background-color: white;
+    background-color: $color-white;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
@@ -67,7 +69,7 @@ html, body {
   }
   
   .board {
-    display: flex;
+    display: $display-flex;
     flex: 1;
     flex-grow: 1;
     align-self: stretch;
@@ -78,7 +80,7 @@ html, body {
 
   .default-board {
       float: right;
-      width: 30%;
+      width: $width;
   }
   
   .settings {
@@ -91,15 +93,15 @@ html, body {
   }
 
   .create-board {
-    width: 30%;
+    width: $width;
     background-color: lightblue;
     color: black;
   }
 
-  .update-title, .del-board {
+  .update-title {
     width: 30%;
     background-color: grey;
-    color: white;
+    color: $color-white;
     margin-right: 20px;
   }
 
@@ -110,12 +112,12 @@ html, body {
   .list {
     flex: none;
     width: 270px;
-    height: 100%;
+    height: $height;
     padding: 0;
     margin: 7px;
     border-radius: 3px;
-    background-color: white;
-    color: #333;
+    background-color: $color-white;
+    color: $color-black;
     border: thin solid #DEDEDE;
     box-sizing: border-box;
   }
@@ -132,7 +134,7 @@ html, body {
   .list-title {
     cursor: pointer;
     text-align: center;
-    color: white;
+    color: $color-white;
     white-space: nowrap;     
     overflow: hidden;         
     text-overflow: ellipsis;
@@ -154,8 +156,8 @@ html, body {
   }
   
   .task {
-    background-color: white;
-    color: #333;
+    background-color: $color-white;
+    color: $color-black;
     font-family: 'Courier New', Courier, monospace;
     border: thin solid #DEDEDE;
     border-radius: 3px;
@@ -165,27 +167,46 @@ html, body {
   }
 
   .add-task {
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 0.5px gray;
-    background-color: lightgreen;
-    color: green;
+    width: $button-width;
+    border-radius: $border-radius;
+    box-shadow: $shadow-box;
+    background-color: $button-lightgreen;
+    color: $color-green;
+  }
+
+  .update-task {
+    width: $width;
+    border-radius: 2px;
+    background-color: $button-lightgreen;
+    color:$color-green;
+  }
+
+  .del-task {
+    width: $width;
+    border-radius: 2px;
+    background-color: lightcoral;
+    color: $color-crimson;
   }
 
   .del-list {
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 0.5px gray;
-    background-color: lightcoral;
-    color: crimson;
+    border-radius: $border-radius;
+    box-shadow: $shadow-box;
+    background-color: lightcoral;;
+    color: $color-crimson;
   }
 
   .add-list {
       width: 100%;
-      border-radius: 5px;
-      box-shadow: 0 0.5px gray;
+      border-radius: $border-radius;
+      box-shadow: $shadow-box;
       background-color: lightseagreen;
-      color: white;
+      color: $color-white;
   }
 
-
+.cancel {
+  width: $width;
+  border-radius: 2px;
+  background-color: lightslategray;
+  color: black;
+}

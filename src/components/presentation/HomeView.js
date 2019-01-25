@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'lodash';
-// import { Alert, Input, Button, Container, Row, Col, Form, FormGroup, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Alert, Input, Button, Form, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { alert, boardTitleValidator } from '../../utils/';
 import Board from '../container/Board';
@@ -88,12 +87,12 @@ render() {
         <div>
               <Form className="default-board">
                     <Input type="select" name="boardList" id="boardList" value={this.state.current_board}
-                      onChange={(e) => this.setState({
+                      onChange={e => this.setState({
                         current_board: parseInt(e.target.value, 10)
                       })}
                     >
                       {
-                        this.props.boards.map((b) => (
+                        this.props.boards.map(b => (
                           <option key={b.id} value={b.id}>{b.title}</option>
                         ))
                       }

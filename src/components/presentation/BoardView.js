@@ -20,7 +20,7 @@ const BoardView = (props) => {
   return (
     <div className="board">
       {
-        props.lists.map((l) => (
+        props.lists.map(l => (
           <List
             key={l.id}
             id={l.id} 
@@ -34,7 +34,7 @@ const BoardView = (props) => {
           <Input 
             type="text"
             placeholder="Enter List Title ..."
-            innerRef={(ref) => textInput = ref}
+            innerRef={ref => textInput = ref}
           />
           <Button className="add-list"
             onClick={handleAddList}

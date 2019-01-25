@@ -21,7 +21,7 @@ class EditTaskModal extends React.Component {
             <FormGroup>
               <Label for="taskTitle">Title:</Label>
               <Input type="text" name="title" id="taskTitle" value={this.state.title} 
-                onChange={(e) => this.setState({
+                onChange={e => this.setState({
                   title: e.target.value
                 })}
               />
@@ -29,7 +29,7 @@ class EditTaskModal extends React.Component {
             <FormGroup>
               <Label for="taskDescription">Description</Label>
               <Input type="textarea" name="taskDescription" id="taskDescription" value={this.state.description} 
-                onChange={(e) => this.setState({
+                onChange={e => this.setState({
                   description: e.target.value
                 })}
               />
@@ -37,7 +37,7 @@ class EditTaskModal extends React.Component {
             <FormGroup>
               <Label for="taskList">Change List</Label>
               <Input type="select" name="taskList" id="taskList" value={this.state.list_id}
-                onChange={(e) => this.setState({
+                onChange={e => this.setState({
                   list_id: parseInt(e.target.value, 10)
                 })}
               >
@@ -51,9 +51,9 @@ class EditTaskModal extends React.Component {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="danger" onClick={() => this.props.deleteHandler(this.state.id)}>Delete Task</Button>
-          <Button color="success" onClick={() => this.props.updateHandler(this.state)}>Update Task</Button>
-          <Button color="secondary" onClick={this.props.toggleHandler}>Cancel</Button>
+          <Button className="del-task" onClick={() => this.props.deleteHandler(this.state.id)}>Delete Task</Button>
+          <Button className="update-task" onClick={() => this.props.updateHandler(this.state)}>Update Task</Button>
+          <Button className="cancel" onClick={this.props.toggleHandler}>Cancel</Button>
         </ModalFooter>
       </Modal>
     )
